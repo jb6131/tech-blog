@@ -19,9 +19,9 @@
       <div class="collapse navbar-collapse">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="/">Home</a>
-          {{#if logged_in}}
           <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
-          <button class="nav-item nav-link no-button" id="logout">Logout</button>
+          {{#if logged_in}}
+          <a class="nav-item nav-link" href="#" id="logout">Logout</a>
           {{else}}
           <a class="nav-item nav-link" href="/login">Login</a>
           {{/if}}
