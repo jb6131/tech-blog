@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -69,8 +69,74 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+router.get('/comments/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+
+    const commentData = await Comment.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+      where: {
+        post_id: req.params.id,
+      },
+    });
+
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
+
+    res.render('comments', { post, comments });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.get('/newpost', (req, res) => {
   res.render('newpost');
+});
+
+router.get('/newcomment/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+
+    const commentData = await Comment.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+      where: {
+        post_id: req.params.id,
+      },
+    });
+
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
+
+    res.render('newcomment', { post, comments });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 router.get('/login', (req, res) => {
