@@ -69,6 +69,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+router.get('/newpost', (req, res) => {
+  res.render('newpost');
+});
+
 router.get('/login', (req, res) => {
   res.render('login');
 });
