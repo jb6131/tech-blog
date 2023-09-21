@@ -30,7 +30,9 @@ npm i
 
 ## Usage
 
-On opening the application, you will see the following page:
+Follow [this](https://guarded-depths-55102-13bfad643e7e.herokuapp.com/) link to open the application.
+
+On opening the application, you will see the following page or similar:
 
 ![A screenshot of the homepage](./assets/screenshot.png)
 
