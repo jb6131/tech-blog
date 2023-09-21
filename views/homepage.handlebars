@@ -7,7 +7,7 @@
     <p>
       {{post.content}}
     </p>
-    <p class="font-italic text-right">Created by {{post.user.username}} on {{post.date_created}}</p>
+    <p class="font-italic text-right">Created by {{post.user.username}} on {{format_date post.date_created}}</p>
   </div>
 </div>
 {{/each}}

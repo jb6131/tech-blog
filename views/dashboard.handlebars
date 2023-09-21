@@ -10,7 +10,7 @@
     <p>
       {{post.content}}
     </p>
-    <p class="font-italic text-right">Created on {{post.date_created}}</p>
+    <p class="font-italic text-right">Created on {{format_date post.date_created}}</p>
   </div>
   {{/each}}
   {{/if}}
