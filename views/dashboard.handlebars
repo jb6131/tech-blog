@@ -1,12 +1,12 @@
 <div class="container-fluid">
-  <h2 class="mt-3 ml-2">Welcome, {{username}}!</h2>
+  <h1 class="mt-4 ml-3">Welcome, {{username}}!</h1>
 </div>
 
 <div class="container-fluid">
   {{#if posts.length}}
   {{#each posts as |post|}}
   <div class="border border-secondary rounded mx-3 my-5 pt-4 px-4">
-    <h2 class="pb-2">{{post.title}}</h2>
+    <h2>{{post.title}} <a href="/edit/{{post.id}}">(edit)</a></h2>
     <p>
       {{post.content}}
     </p>
@@ -16,5 +16,7 @@
   {{/if}}
 
 
-  <a class="btn btn-primary m-2" href="/newpost">+ New Post</a>
+  <a class="btn btn-primary m-3" href="/newpost">+ New Post</a>
 </div>
+
+<script src="./js/deletepost.js"></script>

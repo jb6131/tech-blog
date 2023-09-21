@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="border border-secondary rounded mx-3 my-5 pt-4 px-4">
+    <div class="d-flex justify-content-between align-items-center pb-2">
+      <h2>Update or Delete Post</h2>
+      <button type="button" class="btn btn-danger btn-sm" id="delete-btn">X</button>
+    </div>
+
+    <form class="update-post-form">
+      <div class="form-group">
+        <label for="post-title">Title:</label>
+        <input type="text" class="form-control" id="post-title" value="{{title}}">
+      </div>
+      <div class="form-group">
+        <label for="post-content">Content:</label>
+        <input type="text" class="form-control" id="post-content" value="{{content}}">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="update-btn">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/updatedeletepost.js"></script>
