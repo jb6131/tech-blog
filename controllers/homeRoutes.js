@@ -96,14 +96,20 @@ router.get('/comments/:id', async (req, res) => {
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
-    res.render('comments', { post, comments });
+    res.render('comments', { 
+      post, 
+      comments,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 router.get('/newpost', (req, res) => {
-  res.render('newpost');
+  res.render('newpost', {
+    logged_in: req.session.logged_in,
+  });
 });
 
 router.get('/newcomment/:id', async (req, res) => {
@@ -133,7 +139,11 @@ router.get('/newcomment/:id', async (req, res) => {
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
-    res.render('newcomment', { post, comments });
+    res.render('newcomment', { 
+      post, 
+      comments,
+      logged_in: req.session.logged_in,
+     });
   } catch (err) {
     res.status(400).json(err);
   }
