@@ -139,6 +139,21 @@ router.get('/newcomment/:id', async (req, res) => {
   }
 });
 
+router.get('/edit/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+
+    const post = postData.get({ plain: true });
+
+    res.render('updatedeletepost', {
+      ...post,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.get('/login', (req, res) => {
   res.render('login');
 });
